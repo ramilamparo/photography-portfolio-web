@@ -1,0 +1,48 @@
+{
+	"name": "photography-portfolio-cms",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "gatsby develop"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-helmet": "^6.1.0",
+		"styled-components": "^5.2.3"
+	},
+	"devDependencies": {
+		"@types/node": "^15.0.1",
+		"@types/react": "^17.0.4",
+		"@types/react-dom": "^17.0.3",
+		"@types/react-helmet": "^6.1.1",
+		"@typescript-eslint/eslint-plugin": "^4.22.0",
+		"@typescript-eslint/parser": "^4.22.0",
+		"babel-eslint": "^10.1.0",
+		"babel-plugin-styled-components": "^1.12.0",
+		"dotenv": "^8.2.0",
+		"eslint": "^7.25.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-config-react-app": "^6.0.0",
+		"eslint-plugin-flowtype": "^5.7.2",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-plugin-react": "^7.23.2",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"gatsby": "^3.4.0",
+		"gatsby-plugin-apollo": "^3.0.2",
+		"gatsby-plugin-eslint": "^3.0.0",
+		"gatsby-plugin-layout": "^2.4.0",
+		"gatsby-plugin-manifest": "^3.4.0",
+		"gatsby-plugin-offline": "^4.4.0",
+		"gatsby-plugin-react-helmet": "^4.4.0",
+		"gatsby-plugin-styled-components": "^4.4.0",
+		"gatsby-source-graphql": "^3.4.0",
+		"prettier": "^2.2.1"
+	}
+}
