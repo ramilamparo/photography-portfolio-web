@@ -60,6 +60,13 @@ module.exports = {
 				url: `${GATSBY_API_URL}/graphql`
 			}
 		},
+		/** Make google fonts with Roboto font and material icons available. */
+		{
+			resolve: "gatsby-plugin-google-fonts",
+			options: {
+				fonts: ["Work Sans:400"]
+			}
+		},
 		/**
 		 * Enables components which lives above pages
 		 * and persists on page changes.
