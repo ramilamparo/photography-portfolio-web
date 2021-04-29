@@ -6,5 +6,5 @@ export interface LogoProps {
 }
 
 export const Logo = ({ className }: LogoProps) => {
-	return <Image src={{ x: 500, y: 500 }} alt="Home" className={className} />;
+	return <Image src={{ x: 800, y: 500 }} alt="Home" className={className} />;
 };

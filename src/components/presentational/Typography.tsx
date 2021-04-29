@@ -7,18 +7,15 @@ export type TypographyComponentOverride = "span" | "h1" | "p";
 
 export interface TypographyProps {
 	variant?: TypographyVariant;
-	component: TypographyComponentOverride;
+	component?: TypographyComponentOverride;
 	children?: string;
+	className?: string;
 }
 
 export class Typography extends Component<TypographyProps, {}> {
-	constructor({ component, children, variant }: TypographyProps) {
-		super({
-			component,
-			children,
-			variant: variant || "paragraph"
-		});
-	}
+	public static defaultProps: Partial<TypographyProps> = {
+		variant: "paragraph"
+	};
 
 	public static baseTypographyStyle = css`
 		font-family: "Work Sans";
@@ -35,12 +32,12 @@ export class Typography extends Component<TypographyProps, {}> {
 	`;
 
 	public render = () => {
-		const { component, variant, children } = this.props;
+		const { component, variant, children, className } = this.props;
 
 		switch (variant) {
 			case "paragraph":
 				return (
-					<Typography.Paragraph as={component}>
+					<Typography.Paragraph className={className} as={component}>
 						{children}
 					</Typography.Paragraph>
 				);

@@ -1,18 +1,21 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { Logo } from "../Logo";
+import { Typography } from "../Typography";
 import { NavBarLinkItemProps } from "./NavBarLinkItem";
 import { NavBarLinkItemList } from "./NavBarLinkItemList";
 
-export interface NavBarProps {}
+export interface NavBarProps {
+	links: NavBarLinkItemProps[];
+}
 
 const StyledNav = styled.nav`
-	background-color: red;
 	width: 40rem;
 	padding: 3rem;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 
 	@media (${Breakpoint.PHONE_ONLY}) {
 		width: 100%;
@@ -26,6 +29,7 @@ const StyledLogo = styled(Logo)`
 	height: 13rem;
 	width: 13rem;
 	border-radius: 10000px;
+	object-fit: cover;
 
 	@media (${Breakpoint.PHONE_ONLY}) {
 		height: 8rem;
@@ -33,26 +37,26 @@ const StyledLogo = styled(Logo)`
 	}
 `;
 
-export const NavBar = () => {
-	const { current: links } = useRef<NavBarLinkItemProps[]>([
-		{
-			label: "Projects",
-			path: "/projects"
-		},
-		{
-			label: "Instagram",
-			path: "/instagram"
-		},
-		{
-			label: "About",
-			path: "/about"
-		}
-	]);
+const CopyrightText = styled(Typography)`
+	font-size: 1.2rem;
+	position: absolute;
+	margin: 1rem;
+	bottom: 0;
+	left: 0;
 
+	@media (${Breakpoint.PHONE_ONLY}) {
+		display: none;
+	}
+`;
+
+export const NavBar = ({ links }: NavBarProps) => {
 	return (
 		<StyledNav>
 			<StyledLogo />
 			<NavBarLinkItemList links={links} />
+			<CopyrightText>
+				{`Copyright © ${new Date().getFullYear()} Jun Regala`}
+			</CopyrightText>
 		</StyledNav>
 	);
 };
