@@ -20,6 +20,7 @@ const Content = styled.div`
 	overflow-y: auto;
 	overflow-x: hidden;
 	background-color: #111111;
+	flex-grow: 1;
 `;
 
 export const NavBarContent = ({
