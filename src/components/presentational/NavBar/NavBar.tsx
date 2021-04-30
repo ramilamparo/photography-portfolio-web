@@ -26,7 +26,7 @@ const StyledNav = styled.nav`
 
 const StyledLogo = styled(Logo)`
 	height: 13rem;
-	width: 13rem;
+	max-width: 100%;
 	object-fit: cover;
 
 	@media (${Breakpoint.PHONE_ONLY}) {
