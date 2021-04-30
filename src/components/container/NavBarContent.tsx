@@ -13,8 +13,8 @@ export const NavBarContent = ({ children }: NavBarContentProps) => {
 			path: "/"
 		},
 		{
-			label: "Projects",
-			path: "/projects"
+			label: "Gallery",
+			path: "/gallery"
 		},
 		{
 			label: "Instagram",

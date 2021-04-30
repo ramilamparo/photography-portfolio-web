@@ -11,7 +11,7 @@ export interface LinkProps {
 	button?: boolean;
 }
 
-const StyledLink = styled.a<Pick<LinkProps, "button">>`
+const StyledLink = styled.a<{ $button?: boolean }>`
 	${Typography.baseTypographyStyle}
 	text-decoration: none;
 	&:hover,
@@ -20,7 +20,7 @@ const StyledLink = styled.a<Pick<LinkProps, "button">>`
 		text-decoration: underline;
 	}
 
-	${(props) => props.button && baseButtonStyle}
+	${(props) => props.$button && baseButtonStyle}
 `;
 
 const isUrlSameDomainRegexp = /^(\/|#)/;
@@ -32,13 +32,13 @@ const isUrlSameDomain = (url: string) => {
 export const Link = ({ to, children, className, button }: LinkProps) => {
 	if (isUrlSameDomain(to)) {
 		return (
-			<StyledLink button={button} className={className} to={to} as={GatsbyLink}>
+			<StyledLink $button={button} className={className} to={to} as={GatsbyLink}>
 				{children}
 			</StyledLink>
 		);
 	}
 	return (
-		<StyledLink button={button} className={className} href={to}>
+		<StyledLink $button={button} className={className} href={to}>
 			{children}
 		</StyledLink>
 	);

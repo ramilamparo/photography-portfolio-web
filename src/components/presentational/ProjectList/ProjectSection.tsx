@@ -7,7 +7,6 @@ export interface ProjectSectionProps {
 
 const Container = styled.div`
 	display: flex;
-	padding: 0 10rem;
 	height: 100vh;
 	& > * {
 		width: 50%;

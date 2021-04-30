@@ -17,17 +17,16 @@ export interface ProjectListProps {
 	sections: SectionItem[];
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+	padding: 0 10rem;
+`;
 
 export const ProjectList = ({ sections }: ProjectListProps) => {
 	const sectionNodes = useMemo(() => {
 		return sections.map((section) => {
 			return (
 				<ProjectSection>
-					<ProjectSectionImage
-						title={section.title}
-						coverSrc={section.coverSrc}
-					/>
+					<ProjectSectionImage title={section.title} coverSrc={section.coverSrc} />
 					<ProjectSectionDescription
 						title={section.title}
 						shortDescription={section.shortDescription}
