@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
-import { Logo } from "../Logo";
+import { Logo } from "../../utils/Logo";
 import { Typography } from "../Typography";
 import { NavBarLinkItemProps } from "./NavBarLinkItem";
 import { NavBarLinkItemList } from "./NavBarLinkItemList";

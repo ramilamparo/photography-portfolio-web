@@ -17,7 +17,6 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-	background-color: yellow;
 	flex-grow: 1;
 	overflow-y: auto;
 	overflow-x: hidden;
