@@ -10,7 +10,8 @@ export interface NavBarLinkItemProps {
 }
 
 const StyledLink = styled(Link)`
-	font-size: 2.5rem;
+	font-size: 1.5rem;
+	text-transform: uppercase;
 
 	@media (${Breakpoint.PHONE_ONLY}) {
 		font-size: 2rem;

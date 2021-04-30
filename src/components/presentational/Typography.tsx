@@ -20,7 +20,7 @@ export class Typography extends Component<TypographyProps, {}> {
 	public static baseTypographyStyle = css`
 		font-family: "Work Sans";
 		font-size: 1.5rem;
-		color: black;
+		color: white;
 	`;
 
 	public static paragraphTypographyStyle = css`

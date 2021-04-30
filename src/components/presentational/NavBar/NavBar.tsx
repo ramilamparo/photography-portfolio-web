@@ -11,7 +11,7 @@ export interface NavBarProps {
 }
 
 const StyledNav = styled.nav`
-	width: 40rem;
+	width: 30rem;
 	padding: 3rem;
 	display: flex;
 	flex-direction: column;
@@ -28,7 +28,6 @@ const StyledNav = styled.nav`
 const StyledLogo = styled(Logo)`
 	height: 13rem;
 	width: 13rem;
-	border-radius: 10000px;
 	object-fit: cover;
 
 	@media (${Breakpoint.PHONE_ONLY}) {
@@ -55,7 +54,7 @@ export const NavBar = ({ links }: NavBarProps) => {
 			<StyledLogo />
 			<NavBarLinkItemList links={links} />
 			<CopyrightText>
-				{`Copyright © ${new Date().getFullYear()} Jun Regala`}
+				{`Copyright ©${new Date().getFullYear()} All rights reserved`}
 			</CopyrightText>
 		</StyledNav>
 	);
