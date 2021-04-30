@@ -27,7 +27,12 @@ export const NavBarLinkItemList = ({
 }: NavBarLinkItemListProps) => {
 	const linkItemList = useMemo(() => {
 		return links.map((linkProps) => {
-			return <NavBarLinkItem {...linkProps} />;
+			return (
+				<NavBarLinkItem
+					key={linkProps.label + linkProps.path}
+					{...linkProps}
+				/>
+			);
 		});
 	}, [links]);
 

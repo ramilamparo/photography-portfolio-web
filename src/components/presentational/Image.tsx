@@ -1,23 +1,11 @@
-import React, { useMemo } from "react";
-
-export interface PlaceholderImage {
-	x: number;
-	y: number;
-}
+import React from "react";
 
 export interface ImageProps {
 	alt: string;
-	src: string | PlaceholderImage;
+	src: string;
 	className?: string;
 }
 
 export const Image = ({ alt, src, className }: ImageProps) => {
-	const srcUri = useMemo(() => {
-		if (typeof src === "string") {
-			return src;
-		}
-		return `https://via.placeholder.com/${src.x}x${src.y}`;
-	}, [src]);
-
-	return <img src={srcUri} alt={alt} className={className} />;
+	return <img src={src} alt={alt} className={className} />;
 };
