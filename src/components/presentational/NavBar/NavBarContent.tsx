@@ -17,9 +17,9 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-	flex-grow: 1;
 	overflow-y: auto;
 	overflow-x: hidden;
+	background-color: #111111;
 `;
 
 export const NavBarContent = ({

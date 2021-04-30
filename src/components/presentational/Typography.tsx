@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
 
-export type TypographyVariant = "paragraph";
-
-export type TypographyComponentOverride = "span" | "h1" | "p";
-
+export type TypographyVariant = "paragraph" | "title" | "quote";
 export interface TypographyProps {
 	variant?: TypographyVariant;
-	component?: TypographyComponentOverride;
+	component?: string;
 	children?: string;
 	className?: string;
 }
@@ -27,8 +24,37 @@ export class Typography extends Component<TypographyProps, {}> {
 		${Typography.baseTypographyStyle}
 	`;
 
+	public static titleTypographyStyle = css`
+		${Typography.baseTypographyStyle}
+		font-family: "Abril Fatface";
+	`;
+
+	public static quoteTypographyStyle = css`
+		${Typography.baseTypographyStyle}
+		color: #888;
+		position: relative;
+		line-height: 3rem;
+		&::before {
+			content: "";
+			position: absolute;
+			left: -1rem;
+			top: 0;
+			background-color: orange;
+			height: 6rem;
+			width: 2px;
+		}
+	`;
+
 	private static Paragraph = styled.p`
 		${Typography.paragraphTypographyStyle}
+	`;
+
+	private static Title = styled.p`
+		${Typography.titleTypographyStyle}
+	`;
+
+	private static Quote = styled.p`
+		${Typography.quoteTypographyStyle}
 	`;
 
 	public render = () => {
@@ -37,9 +63,21 @@ export class Typography extends Component<TypographyProps, {}> {
 		switch (variant) {
 			case "paragraph":
 				return (
-					<Typography.Paragraph className={className} as={component}>
+					<Typography.Paragraph className={className} as={component as any}>
 						{children}
 					</Typography.Paragraph>
+				);
+			case "title":
+				return (
+					<Typography.Title className={className} as={component as any}>
+						{children}
+					</Typography.Title>
+				);
+			case "quote":
+				return (
+					<Typography.Quote className={className} as={component as any}>
+						{children}
+					</Typography.Quote>
 				);
 			default:
 				throw new Error(`Unknown variant ${variant}.`);

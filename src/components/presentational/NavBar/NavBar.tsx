@@ -13,9 +13,8 @@ export interface NavBarProps {
 const StyledNav = styled.nav`
 	width: 30rem;
 	padding: 3rem;
-	display: flex;
-	flex-direction: column;
 	position: relative;
+	flex-shrink: 0;
 
 	@media (${Breakpoint.PHONE_ONLY}) {
 		width: 100%;

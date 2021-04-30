@@ -64,7 +64,7 @@ module.exports = {
 		{
 			resolve: "gatsby-plugin-google-fonts",
 			options: {
-				fonts: ["Work Sans:400"]
+				fonts: ["Work Sans:400", "Abril Fatface:400"]
 			}
 		},
 		/**
@@ -73,9 +73,7 @@ module.exports = {
 		 */ {
 			resolve: "gatsby-plugin-layout",
 			options: {
-				component: require.resolve(
-					"./src/components/utils/PageContainer.tsx"
-				)
+				component: require.resolve("./src/components/utils/PageContainer.tsx")
 			}
 		},
 		"gatsby-plugin-eslint",

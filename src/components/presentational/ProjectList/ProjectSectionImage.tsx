@@ -7,7 +7,9 @@ export interface ProjectSectionImageProps {
 	title: string;
 }
 
-const StyledImage = styled(Image)``;
+const StyledImage = styled(Image)`
+	object-fit: cover;
+`;
 
 export const ProjectSectionImage = ({
 	coverSrc,

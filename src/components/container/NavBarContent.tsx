@@ -9,6 +9,10 @@ export interface NavBarContentProps {
 export const NavBarContent = ({ children }: NavBarContentProps) => {
 	const { current: links } = useRef<NavBarLinkItemProps[]>([
 		{
+			label: "Home",
+			path: "/"
+		},
+		{
 			label: "Projects",
 			path: "/projects"
 		},
@@ -19,6 +23,10 @@ export const NavBarContent = ({ children }: NavBarContentProps) => {
 		{
 			label: "About",
 			path: "/about"
+		},
+		{
+			label: "Contact",
+			path: "/contact"
 		}
 	]);
 

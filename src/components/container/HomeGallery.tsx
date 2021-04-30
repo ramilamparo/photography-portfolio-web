@@ -1,9 +1,20 @@
 import React from "react";
 import { useProjectGallery } from "../hooks/useProjectGallery";
-import { GridGallery } from "../presentational/GridGallery/GridGallery";
+import { ProjectList } from "../presentational/ProjectList/ProjectList";
 
-export const HomeGallery = () => {
-	const galleryItems = useProjectGallery();
+export const ProjectSection = () => {
+	const projectItems = useProjectGallery();
 
-	return <GridGallery items={galleryItems} />;
+	return (
+		<ProjectList
+			sections={projectItems.map((item) => {
+				return {
+					coverSrc: item.coverSrc,
+					title: item.title,
+					link: `#${item.title}`,
+					shortDescription: item.shortDescription
+				};
+			})}
+		/>
+	);
 };

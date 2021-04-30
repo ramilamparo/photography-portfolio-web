@@ -24,7 +24,10 @@ export const ProjectList = ({ sections }: ProjectListProps) => {
 		return sections.map((section) => {
 			return (
 				<ProjectSection>
-					<ProjectSectionImage coverSrc={section.coverSrc} />
+					<ProjectSectionImage
+						title={section.title}
+						coverSrc={section.coverSrc}
+					/>
 					<ProjectSectionDescription
 						title={section.title}
 						shortDescription={section.shortDescription}

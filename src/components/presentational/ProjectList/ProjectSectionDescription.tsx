@@ -9,7 +9,27 @@ export interface ProjectSectionDescriptionProps {
 	link: string;
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+	overflow: hidden;
+	position: relative;
+`;
+
+const CenterContainer = styled.div`
+	padding: 0 5rem;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+`;
+
+const Title = styled(Typography)`
+	font-size: 3rem;
+`;
+
+const StyledShortDescription = styled(Typography)`
+	margin: 4rem 0;
+`;
+
+const StyledLink = styled(Link)``;
 
 export const ProjectSectionDescription = ({
 	link,
@@ -18,11 +38,15 @@ export const ProjectSectionDescription = ({
 }: ProjectSectionDescriptionProps) => {
 	return (
 		<Container>
-			<Typography variant="title">{title}</Typography>
-			<Typography variant="quote">{shortDescription}</Typography>
-			<Link button to={link}>
-				View Portfolio
-			</Link>
+			<CenterContainer>
+				<Title variant="title">{title}</Title>
+				<StyledShortDescription variant="quote">
+					{shortDescription}
+				</StyledShortDescription>
+				<StyledLink button to={link}>
+					View Portfolio
+				</StyledLink>
+			</CenterContainer>
 		</Container>
 	);
 };

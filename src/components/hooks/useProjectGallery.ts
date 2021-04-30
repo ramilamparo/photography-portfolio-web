@@ -3,8 +3,11 @@ import * as faker from "faker";
 import { RandomUtils } from "../../utils/RandomUtils";
 
 export interface ProjectGallery {
-	src: string;
-	alt: string;
+	coverSrc: string;
+	imagesSrc: string[];
+	title: string;
+	description: string;
+	shortDescription: string;
 }
 
 const getRandomTitle = () => {
@@ -25,12 +28,31 @@ const getRandomImage = () => {
 	return `${faker.image.nature(x, y)}`;
 };
 
+const getRandomShortDescription = () => {
+	return faker.lorem.paragraph(RandomUtils.generateRandomNumberBetween(1, 3));
+};
+
+const getRandomDescription = () => {
+	return faker.lorem.paragraphs(RandomUtils.generateRandomNumberBetween(3, 7));
+};
+
 const createProjectGallery = (count: number) => {
 	const gallery: ProjectGallery[] = [];
 	for (let i = 0; i < count; i++) {
+		const images: string[] = [];
+
+		const randomNumber = RandomUtils.generateRandomNumberBetween(4, 9);
+
+		for (let j = 0; j < randomNumber; j++) {
+			images.push(getRandomImage());
+		}
+
 		gallery.push({
-			alt: getRandomTitle(),
-			src: getRandomImage()
+			coverSrc: images[0],
+			description: getRandomDescription(),
+			imagesSrc: images,
+			shortDescription: getRandomShortDescription(),
+			title: getRandomTitle()
 		});
 	}
 	return gallery;

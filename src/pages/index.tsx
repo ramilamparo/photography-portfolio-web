@@ -1,8 +1,8 @@
 import React from "react";
-import { HomeGallery } from "../components/container/HomeGallery";
+import { ProjectSection } from "../components/container/HomeGallery";
 
 const HomePage = () => {
-	return <HomeGallery />;
+	return <ProjectSection />;
 };
 
 export default HomePage;
