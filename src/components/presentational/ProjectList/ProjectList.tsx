@@ -17,9 +17,7 @@ export interface ProjectListProps {
 	sections: SectionItem[];
 }
 
-const Container = styled.div`
-	padding: 0 10rem;
-`;
+const Container = styled.div``;
 
 export const ProjectList = ({ sections }: ProjectListProps) => {
 	const sectionNodes = useMemo(() => {

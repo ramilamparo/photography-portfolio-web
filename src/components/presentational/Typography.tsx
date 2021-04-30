@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, ReactNode } from "react";
 import styled, { css } from "styled-components";
+import { mainColor } from "../../utils/styles/theme";
 
 export type TypographyVariant = "paragraph" | "title" | "quote";
 export interface TypographyProps {
 	variant?: TypographyVariant;
 	component?: string;
-	children?: string;
+	children?: ReactNode;
 	className?: string;
 }
 
@@ -39,7 +40,7 @@ export class Typography extends Component<TypographyProps, {}> {
 			position: absolute;
 			left: -1rem;
 			top: 0;
-			background-color: orange;
+			background-color: ${mainColor};
 			height: 6rem;
 			width: 2px;
 		}

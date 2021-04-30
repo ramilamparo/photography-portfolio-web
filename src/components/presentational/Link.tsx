@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link as GatsbyLink } from "gatsby";
 import { Typography } from "./Typography";
-import { baseButtonStyle } from "./Button";
+import { outlineButtonStyle } from "./Button";
 
 export interface LinkProps {
 	to: string;
@@ -20,7 +20,7 @@ const StyledLink = styled.a<{ $button?: boolean }>`
 		text-decoration: underline;
 	}
 
-	${(props) => props.$button && baseButtonStyle}
+	${(props) => props.$button && outlineButtonStyle}
 `;
 
 const isUrlSameDomainRegexp = /^(\/|#)/;

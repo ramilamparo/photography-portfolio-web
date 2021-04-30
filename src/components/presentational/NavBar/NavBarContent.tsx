@@ -21,6 +21,7 @@ const Content = styled.div`
 	overflow-x: hidden;
 	background-color: #111111;
 	flex-grow: 1;
+	padding: 0 15rem;
 `;
 
 export const NavBarContent = ({

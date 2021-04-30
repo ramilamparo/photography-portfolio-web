@@ -12,7 +12,6 @@ export interface ProjectGalleryProps {
 const Container = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	padding: 0 10rem;
 	& > * {
 		flex-basis: 33%;
 	}
