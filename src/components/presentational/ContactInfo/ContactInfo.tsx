@@ -19,6 +19,7 @@ const Container = styled.div`
 const Title = styled(Typography)`
 	color: black;
 	font-size: 3rem;
+	margin-bottom: 1rem;
 `;
 
 const Subtitle = styled(Typography)`
