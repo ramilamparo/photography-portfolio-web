@@ -51,7 +51,6 @@ const StyledImage = styled(Image)`
 `;
 
 const StyledTitle = styled(Typography)`
-	font-size: 5rem;
 	margin-bottom: 3rem;
 `;
 

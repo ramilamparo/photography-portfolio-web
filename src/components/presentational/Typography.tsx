@@ -28,6 +28,7 @@ export class Typography extends Component<TypographyProps, {}> {
 	public static titleTypographyStyle = css`
 		${Typography.baseTypographyStyle}
 		font-family: "Abril Fatface";
+		font-size: 4rem;
 	`;
 
 	public static quoteTypographyStyle = css`

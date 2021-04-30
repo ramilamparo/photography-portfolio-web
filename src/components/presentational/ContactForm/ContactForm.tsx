@@ -44,9 +44,7 @@ const MessageInput = styled(TextInputArea)`
 `;
 const SubmitButton = styled(Button)``;
 
-const Title = styled(Typography)`
-	font-size: 5rem;
-`;
+const Title = styled(Typography)``;
 
 export const ContactForm = ({
 	onSubmit,

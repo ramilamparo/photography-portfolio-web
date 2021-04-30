@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { mainColor } from "../../../utils/styles/theme";
-import { Icon } from "../Icon";
 import { Typography } from "../Typography";
 import { ContactInfoItem } from "./ContactInfoItem";
 

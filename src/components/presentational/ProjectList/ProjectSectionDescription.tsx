@@ -21,9 +21,7 @@ const CenterContainer = styled.div`
 	transform: translateY(-50%);
 `;
 
-const Title = styled(Typography)`
-	font-size: 3rem;
-`;
+const Title = styled(Typography)``;
 
 const StyledShortDescription = styled(Typography)`
 	margin: 4rem 0;
@@ -39,7 +37,9 @@ export const ProjectSectionDescription = ({
 	return (
 		<Container>
 			<CenterContainer>
-				<Title variant="title">{title}</Title>
+				<Title variant="title" component="h2">
+					{title}
+				</Title>
 				<StyledShortDescription variant="quote">
 					{shortDescription}
 				</StyledShortDescription>
