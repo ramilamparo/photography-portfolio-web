@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import edge from "../../../assets/navbar-edge.png";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { Logo } from "../../utils/Logo";
 import { Typography } from "../Typography";
@@ -15,6 +16,27 @@ const StyledNav = styled.nav`
 	padding: 3rem;
 	position: relative;
 	flex-shrink: 0;
+
+	&::before {
+		content: "";
+		height: 100%;
+		width: 15px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-image: url(${edge});
+		background-size: contain;
+		opacity: 0.2;
+	}
+	&::after {
+		content: "";
+		height: 100%;
+		width: 15px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+	}
 
 	@media (${Breakpoint.PHONE_ONLY}) {
 		width: 100%;
@@ -41,6 +63,7 @@ const CopyrightText = styled(Typography)`
 	margin: 1rem;
 	bottom: 0;
 	left: 0;
+	opacity: 0.2;
 
 	@media (${Breakpoint.PHONE_ONLY}) {
 		display: none;
