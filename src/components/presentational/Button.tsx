@@ -15,6 +15,7 @@ export const baseButtonStyle = css`
 export const outlineButtonStyle = css`
 	${baseButtonStyle}
 	text-transform: uppercase;
+	display: inline-block;
 	border: 1px solid ${mainColor};
 	color: ${mainColor};
 	padding: 0.5rem;
