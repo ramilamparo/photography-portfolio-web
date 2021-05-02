@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { mainColor } from "../../../utils/styles/theme";
 import { Typography } from "../Typography";
 import { ContactInfoItem } from "./ContactInfoItem";
@@ -14,6 +15,10 @@ export interface ContactInfoProps {
 const Container = styled.div`
 	background-color: ${mainColor};
 	padding: 5rem;
+
+	@media (${Breakpoint.DESKTOP_DOWN}) {
+		padding: 2rem;
+	}
 `;
 
 const Title = styled(Typography)`

@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { FormProviderProps, FormProvider } from "react-form";
 import styled from "styled-components";
+import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { Button } from "../Button";
 import { TextInput } from "../TextInput";
 import { TextInputArea } from "../TextInputArea";
@@ -46,6 +47,14 @@ const SubmitButton = styled(Button)``;
 
 const Title = styled(Typography)``;
 
+const Form = styled.form`
+	padding: 5rem;
+
+	@media (${Breakpoint.DESKTOP_DOWN}) {
+		padding: 2rem;
+	}
+`;
+
 export const ContactForm = ({
 	onSubmit,
 	className,
@@ -60,7 +69,7 @@ export const ContactForm = ({
 		[onSubmit]
 	);
 	return (
-		<form onSubmit={handleSubmit} className={className}>
+		<Form onSubmit={handleSubmit} className={className}>
 			<Title component="h2" variant="title">
 				Send me a message...
 			</Title>
@@ -94,6 +103,6 @@ export const ContactForm = ({
 				</FormProvider>
 			</InputContainer>
 			<SubmitButton>Send Message</SubmitButton>
-		</form>
+		</Form>
 	);
 };
