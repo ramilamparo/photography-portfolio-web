@@ -14,6 +14,7 @@ export interface NavBarButtonProps {
 const StyledButton = styled.button`
 	${baseButtonStyle}
 	background-color: transparent;
+	z-index: 1;
 `;
 
 const StyledIcon = styled(Icon)`
