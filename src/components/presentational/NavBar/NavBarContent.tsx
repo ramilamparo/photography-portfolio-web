@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
-import styled from "styled-components";
+import React, { ReactNode, useCallback, useState } from "react";
+import styled, { css } from "styled-components";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
+import { navBarWidth } from "../../../utils/styles/theme";
 import { NavBar, NavBarProps } from "./NavBar";
 
 export interface NavBarContentProps extends NavBarProps {
@@ -8,11 +9,21 @@ export interface NavBarContentProps extends NavBarProps {
 }
 
 const Container = styled.div`
+	overflow-x: hidden;
+`;
+
+const closedNavBarStyle = css`
+	transform: translateX(-${navBarWidth});
+`;
+
+const MovingContainer = styled.div<{ $navBarOpen: boolean }>`
 	display: flex;
 	height: 100vh;
+	transition: transform 0.2s ease-in-out;
 
-	@media (${Breakpoint.PHONE_ONLY}) {
-		flex-direction: column;
+	@media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
+		width: calc(100% + ${navBarWidth});
+		${(props) => !props.$navBarOpen && closedNavBarStyle}
 	}
 `;
 
@@ -28,10 +39,22 @@ export const NavBarContent = ({
 	children,
 	...navBarProps
 }: NavBarContentProps) => {
+	const [navBarOpen, setNavBarOpen] = useState(false);
+
+	const handleOnClose = useCallback(() => {
+		setNavBarOpen(false);
+	}, []);
+
+	const handleOnOpen = useCallback(() => {
+		setNavBarOpen(true);
+	}, []);
+
 	return (
 		<Container>
-			<NavBar {...navBarProps} />
-			<Content>{children}</Content>
+			<MovingContainer $navBarOpen={navBarOpen}>
+				<NavBar {...navBarProps} onClose={handleOnClose} onOpen={handleOnOpen} />
+				<Content>{children}</Content>
+			</MovingContainer>
 		</Container>
 	);
 };

@@ -1,18 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import edge from "../../../assets/navbar-edge.png";
-import { Breakpoint } from "../../../utils/styles/BreakPoint";
+import { navBarWidth } from "../../../utils/styles/theme";
 import { Logo } from "../../utils/Logo";
 import { Typography } from "../Typography";
+import { NavBarCloseButton } from "./NavBarCloseButton";
 import { NavBarLinkItemProps } from "./NavBarLinkItem";
 import { NavBarLinkItemList } from "./NavBarLinkItemList";
+import { NavBarOpenButton } from "./NavBarOpenButton";
 
 export interface NavBarProps {
 	links: NavBarLinkItemProps[];
+	onClose?: () => void;
+	onOpen?: () => void;
 }
 
 const StyledNav = styled.nav`
-	width: 30rem;
+	width: ${navBarWidth};
+	height: 100%;
 	padding: 3rem;
 	position: relative;
 	flex-shrink: 0;
@@ -37,24 +42,13 @@ const StyledNav = styled.nav`
 		right: 0;
 		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
 	}
-
-	@media (${Breakpoint.PHONE_ONLY}) {
-		width: 100%;
-		padding: 1rem;
-		flex-direction: row;
-		align-items: center;
-	}
 `;
 
 const StyledLogo = styled(Logo)`
+	margin-top: 1rem;
 	height: 13rem;
 	max-width: 100%;
 	object-fit: cover;
-
-	@media (${Breakpoint.PHONE_ONLY}) {
-		height: 8rem;
-		width: 8rem;
-	}
 `;
 
 const CopyrightText = styled(Typography)`
@@ -64,15 +58,25 @@ const CopyrightText = styled(Typography)`
 	bottom: 0;
 	left: 0;
 	opacity: 0.2;
-
-	@media (${Breakpoint.PHONE_ONLY}) {
-		display: none;
-	}
 `;
 
-export const NavBar = ({ links }: NavBarProps) => {
+const CloseButton = styled(NavBarCloseButton)`
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+`;
+
+const MenuButton = styled(NavBarOpenButton)`
+	position: absolute;
+	top: 1rem;
+	right: -4rem;
+`;
+
+export const NavBar = ({ links, onClose, onOpen }: NavBarProps) => {
 	return (
 		<StyledNav>
+			<CloseButton onClick={onClose} />
+			<MenuButton onClick={onOpen} />
 			<StyledLogo />
 			<NavBarLinkItemList links={links} />
 			<CopyrightText>

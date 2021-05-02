@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { Link } from "../Link";
 
 export interface NavBarLinkItemProps {
@@ -12,19 +11,11 @@ export interface NavBarLinkItemProps {
 const StyledLink = styled(Link)`
 	font-size: 1.5rem;
 	text-transform: uppercase;
-
-	@media (${Breakpoint.PHONE_ONLY}) {
-		font-size: 2rem;
-	}
 `;
 
 const StyledLi = styled.li`
 	list-style: none;
 	margin: 2rem 0;
-
-	@media (${Breakpoint.PHONE_ONLY}) {
-		margin: 0;
-	}
 `;
 
 export const NavBarLinkItem = ({

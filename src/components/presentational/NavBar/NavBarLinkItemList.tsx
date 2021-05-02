@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { NavBarLinkItemProps, NavBarLinkItem } from "./NavBarLinkItem";
 
 export interface NavBarLinkItemListProps {
@@ -12,13 +11,6 @@ const StyledUl = styled.ul`
 	margin: 5rem 0;
 	display: flex;
 	flex-direction: column;
-
-	@media (${Breakpoint.PHONE_ONLY}) {
-		flex-direction: row;
-		justify-content: space-around;
-		flex-grow: 1;
-		margin: 0;
-	}
 `;
 
 export const NavBarLinkItemList = ({
@@ -28,10 +20,7 @@ export const NavBarLinkItemList = ({
 	const linkItemList = useMemo(() => {
 		return links.map((linkProps) => {
 			return (
-				<NavBarLinkItem
-					key={linkProps.label + linkProps.path}
-					{...linkProps}
-				/>
+				<NavBarLinkItem key={linkProps.label + linkProps.path} {...linkProps} />
 			);
 		});
 	}, [links]);
