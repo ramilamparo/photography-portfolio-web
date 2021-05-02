@@ -3,7 +3,7 @@ import { useAboutMe } from "../hooks/useAboutMe";
 import { AboutInfo as AboutInfoPresentational } from "../presentational/About/AboutInfo";
 
 interface AboutInfoProps {
-	className: string;
+	className?: string;
 }
 
 export const AboutInfo = ({ className }: AboutInfoProps) => {

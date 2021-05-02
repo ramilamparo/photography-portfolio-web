@@ -8,7 +8,9 @@ export interface AboutImageProps {
 	className?: string;
 }
 
-const StyledImage = styled(Image)``;
+const StyledImage = styled(Image)`
+	object-fit: cover;
+`;
 
 export const AboutImage = ({ className, alt, src }: AboutImageProps) => {
 	return <StyledImage className={className} alt={alt} src={src} />;
