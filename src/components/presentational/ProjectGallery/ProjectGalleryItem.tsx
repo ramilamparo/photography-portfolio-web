@@ -13,6 +13,7 @@ export interface ProjectGalleryItemProps {
 
 const Container = styled.div`
 	position: relative;
+	height: 100%;
 
 	&::before {
 		transition-duration: 1s;

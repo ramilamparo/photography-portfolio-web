@@ -4,6 +4,7 @@ import {
 	ProjectGalleryItemProps
 } from "./ProjectGalleryItem";
 import styled from "styled-components";
+import { Breakpoint } from "../../../utils/styles/BreakPoint";
 
 export interface ProjectGalleryProps {
 	items: ProjectGalleryItemProps[];
@@ -12,8 +13,21 @@ export interface ProjectGalleryProps {
 const Container = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+	height: 100vh;
+
 	& > * {
-		flex-basis: 33%;
+		width: 33%;
+	}
+
+	@media (${Breakpoint.DESKTOP_DOWN}) {
+		& > * {
+			width: 50%;
+		}
+	}
+	@media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
+		& > * {
+			width: 100%;
+		}
 	}
 `;
 

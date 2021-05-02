@@ -5,5 +5,6 @@ export enum Breakpoint {
 	TABLET_LANDSCAPE_UP = "min-width: 900px",
 	DESKTOP_DOWN = "max-width: 1199px",
 	DESKTOP_UP = "min-width: 1200px",
+	BIG_DESKTOP_DOWN = "max-width: 1799px",
 	BIG_DESKTOP_UP = "min-width: 1800px"
 }

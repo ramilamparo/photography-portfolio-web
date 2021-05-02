@@ -36,9 +36,10 @@ const Content = styled.div`
 	flex-grow: 1;
 	padding: 0 15rem;
 
-	@media (${Breakpoint.DESKTOP_DOWN}) {
+	@media (${Breakpoint.BIG_DESKTOP_DOWN}) {
 		padding: 0 5rem;
 	}
+
 	@media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
 		padding: 0;
 	}
