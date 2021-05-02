@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { baseButtonStyle } from "../Button";
 import { Icon } from "../Icon";
@@ -9,30 +9,37 @@ export interface NavBarButtonProps {
 	className?: string;
 	"aria-label": string;
 	children: string;
+	hidden: boolean;
 }
 
-const StyledButton = styled.button`
+const hiddenStyle = css`
+	visibility: hidden;
+`;
+
+const StyledButton = styled.button<{ $hidden: boolean }>`
 	${baseButtonStyle}
 	background-color: transparent;
 	z-index: 1;
+	visibility: hidden;
+
+	@media (${Breakpoint.DESKTOP_DOWN}) {
+		visibility: visible;
+		${(props) => props.$hidden && hiddenStyle}
+	}
 `;
 
 const StyledIcon = styled(Icon)`
 	font-size: 3rem;
 	color: white;
-	visibility: hidden;
-
-	@media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
-		visibility: visible;
-	}
 `;
 
 export const NavBarButton = ({
 	children,
+	hidden,
 	...buttonProps
 }: NavBarButtonProps) => {
 	return (
-		<StyledButton {...buttonProps}>
+		<StyledButton $hidden={hidden} {...buttonProps}>
 			<StyledIcon>{children}</StyledIcon>
 		</StyledButton>
 	);

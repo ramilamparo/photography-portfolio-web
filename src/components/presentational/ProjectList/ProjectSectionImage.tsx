@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { Image } from "../Image";
 
 export interface ProjectSectionImageProps {
@@ -9,6 +10,10 @@ export interface ProjectSectionImageProps {
 
 const StyledImage = styled(Image)`
 	object-fit: cover;
+
+	@media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
+		height: 100vh;
+	}
 `;
 
 export const ProjectSectionImage = ({

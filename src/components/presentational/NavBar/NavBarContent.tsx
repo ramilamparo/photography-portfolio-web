@@ -2,10 +2,12 @@ import React, { ReactNode, useCallback, useState } from "react";
 import styled, { css } from "styled-components";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { navBarWidth } from "../../../utils/styles/theme";
-import { NavBar, NavBarProps } from "./NavBar";
+import { NavBar } from "./NavBar";
+import { NavBarLinkItemProps } from "./NavBarLinkItem";
 
-export interface NavBarContentProps extends NavBarProps {
+export interface NavBarContentProps {
 	children: ReactNode;
+	links: NavBarLinkItemProps[];
 }
 
 const Container = styled.div`
@@ -21,7 +23,7 @@ const MovingContainer = styled.div<{ $navBarOpen: boolean }>`
 	height: 100vh;
 	transition: transform 0.2s ease-in-out;
 
-	@media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
+	@media (${Breakpoint.DESKTOP_DOWN}) {
 		width: calc(100% + ${navBarWidth});
 		${(props) => !props.$navBarOpen && closedNavBarStyle}
 	}
@@ -33,6 +35,13 @@ const Content = styled.div`
 	background-color: #111111;
 	flex-grow: 1;
 	padding: 0 15rem;
+
+	@media (${Breakpoint.DESKTOP_DOWN}) {
+		padding: 0 5rem;
+	}
+	@media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
+		padding: 0;
+	}
 `;
 
 export const NavBarContent = ({
@@ -52,8 +61,13 @@ export const NavBarContent = ({
 	return (
 		<Container>
 			<MovingContainer $navBarOpen={navBarOpen}>
-				<NavBar {...navBarProps} onClose={handleOnClose} onOpen={handleOnOpen} />
-				<Content>{children}</Content>
+				<NavBar
+					isNavBarOpen={navBarOpen}
+					{...navBarProps}
+					onClose={handleOnClose}
+					onOpen={handleOnOpen}
+				/>
+				<Content onPointerDown={handleOnClose}>{children}</Content>
 			</MovingContainer>
 		</Container>
 	);

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { Image } from "../Image";
 import { Link } from "../Link";
 import { Typography } from "../Typography";
@@ -12,7 +13,7 @@ export interface ProjectGalleryItemProps {
 
 const Container = styled.div`
 	position: relative;
-	height: 100vh;
+
 	&::before {
 		transition-duration: 1s;
 		opacity: 0;
@@ -24,6 +25,7 @@ const Container = styled.div`
 		height: 100%;
 		width: 100%;
 	}
+
 	&:hover {
 		&::before {
 			opacity: 1;
@@ -33,6 +35,10 @@ const Container = styled.div`
 			opacity: 1;
 		}
 	}
+
+	/* @media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
+		height: auto;
+	} */
 `;
 
 const DescriptionContainer = styled.div`
@@ -48,6 +54,10 @@ const StyledImage = styled(Image)`
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
+
+	/* @media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
+		height: 100vh;
+	} */
 `;
 
 const StyledTitle = styled(Typography)`

@@ -13,6 +13,7 @@ export interface NavBarProps {
 	links: NavBarLinkItemProps[];
 	onClose?: () => void;
 	onOpen?: () => void;
+	isNavBarOpen: boolean;
 }
 
 const StyledNav = styled.nav`
@@ -72,11 +73,16 @@ const MenuButton = styled(NavBarOpenButton)`
 	right: -4rem;
 `;
 
-export const NavBar = ({ links, onClose, onOpen }: NavBarProps) => {
+export const NavBar = ({
+	links,
+	onClose,
+	onOpen,
+	isNavBarOpen
+}: NavBarProps) => {
 	return (
 		<StyledNav>
-			<CloseButton onClick={onClose} />
-			<MenuButton onClick={onOpen} />
+			<CloseButton hidden={!isNavBarOpen} onClick={onClose} />
+			<MenuButton hidden={isNavBarOpen} onClick={onOpen} />
 			<StyledLogo />
 			<NavBarLinkItemList links={links} />
 			<CopyrightText>

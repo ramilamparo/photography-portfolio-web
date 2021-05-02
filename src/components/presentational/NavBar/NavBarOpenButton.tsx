@@ -4,6 +4,7 @@ import { NavBarButton } from "./NavBarButton";
 export interface NavBarOpenButtonProps {
 	onClick?: () => void;
 	className?: string;
+	hidden: boolean;
 }
 
 export const NavBarOpenButton = (props: NavBarOpenButtonProps) => {

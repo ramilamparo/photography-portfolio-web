@@ -1,5 +1,6 @@
 import React, { Component, ReactNode } from "react";
 import styled, { css } from "styled-components";
+import { Breakpoint } from "../../utils/styles/BreakPoint";
 import { mainColor } from "../../utils/styles/theme";
 
 export type TypographyVariant = "paragraph" | "title" | "quote";
@@ -29,6 +30,9 @@ export class Typography extends Component<TypographyProps, {}> {
 		${Typography.baseTypographyStyle}
 		font-family: "Abril Fatface";
 		font-size: 4rem;
+		@media (${Breakpoint.DESKTOP_DOWN}) {
+			font-size: 3rem;
+		}
 	`;
 
 	public static quoteTypographyStyle = css`
