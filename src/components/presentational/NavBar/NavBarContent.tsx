@@ -21,7 +21,7 @@ const closedNavBarStyle = css`
 const MovingContainer = styled.div<{ $navBarOpen: boolean }>`
 	display: flex;
 	height: 100vh;
-	transition: transform 0.2s ease-in-out;
+	transition: transform 0.5s ease-in;
 
 	@media (${Breakpoint.DESKTOP_DOWN}) {
 		width: calc(100% + ${navBarWidth});
