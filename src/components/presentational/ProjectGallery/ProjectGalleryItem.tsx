@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { Image } from "../Image";
 import { Link } from "../Link";
 import { Typography } from "../Typography";
@@ -11,7 +10,7 @@ export interface ProjectGalleryItemProps {
 	link: string;
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $isBackdropShown: boolean }>`
 	position: relative;
 	height: 100%;
 
@@ -25,9 +24,10 @@ const Container = styled.div`
 		left: 0;
 		height: 100%;
 		width: 100%;
+		${(props) => props.$isBackdropShown && "opacity: 1;"}
 	}
 
-	&:hover {
+	& &:hover {
 		&::before {
 			opacity: 1;
 		}
@@ -36,46 +36,50 @@ const Container = styled.div`
 			opacity: 1;
 		}
 	}
-
-	/* @media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
-		height: auto;
-	} */
 `;
 
-const DescriptionContainer = styled.div`
+const DescriptionContainer = styled.div<{ $isShown: boolean }>`
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	opacity: 0;
 	transition-duration: 1s;
+	opacity: 0;
+	${(props) => props.$isShown && "opacity: 1;"}
 `;
 
 const StyledImage = styled(Image)`
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
-
-	/* @media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
-		height: 100vh;
-	} */
 `;
 
 const StyledTitle = styled(Typography)`
 	margin-bottom: 3rem;
 `;
 
-const StyledLink = styled(Link)``;
+const StyledLink = styled(Link)`
+	text-shadow: 1px 1px 0.7rem black;
+`;
 
 export const ProjectGalleryItem = ({
 	coverSrc,
 	link,
 	title
 }: ProjectGalleryItemProps) => {
+	const [isDescriptionShown, setIsDescriptionShown] = useState(false);
+
+	const handlePointerDown = useCallback(() => {
+		setIsDescriptionShown(!isDescriptionShown);
+	}, [isDescriptionShown]);
+
 	return (
-		<Container>
+		<Container $isBackdropShown={isDescriptionShown} onClick={handlePointerDown}>
 			<StyledImage src={coverSrc} alt={title} />
-			<DescriptionContainer className="description-container">
+			<DescriptionContainer
+				$isShown={isDescriptionShown}
+				className="description-container"
+			>
 				<StyledTitle variant="title">{title}</StyledTitle>
 				<StyledLink button to={link}>
 					View Portfolio
