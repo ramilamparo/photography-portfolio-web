@@ -19,7 +19,7 @@ const Container = styled.div`
 		width: 33%;
 	}
 
-	@media (${Breakpoint.DESKTOP_DOWN}) {
+	@media (${Breakpoint.BIG_DESKTOP_DOWN}) {
 		& > * {
 			width: 50%;
 		}
