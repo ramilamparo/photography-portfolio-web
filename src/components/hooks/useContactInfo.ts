@@ -1,14 +1,5 @@
-import * as faker from "faker";
-export interface ContactInfo {
-	address: string;
-	phone: string;
-	email: string;
-}
+import { ContactInfo } from "../../models/ContactInfo";
 
 export const useContactInfo = (): ContactInfo => {
-	return {
-		address: faker.address.streetAddress(true),
-		email: faker.internet.email(),
-		phone: faker.phone.phoneNumber()
-	};
+	return ContactInfo.getRandom();
 };

@@ -9,7 +9,7 @@ export const ProjectSection = () => {
 		<ProjectList
 			sections={projectItems.map((item) => {
 				return {
-					coverSrc: item.coverSrc,
+					coverSrc: item.cover.src,
 					title: item.title,
 					link: `#${item.title}`,
 					shortDescription: item.shortDescription

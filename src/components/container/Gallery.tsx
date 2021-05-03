@@ -9,7 +9,7 @@ export const Gallery = () => {
 		<ProjectGallery
 			items={gallery.map((item) => {
 				return {
-					coverSrc: item.coverSrc,
+					coverSrc: item.cover.src,
 					link: `#${item.title}`,
 					title: item.title
 				};

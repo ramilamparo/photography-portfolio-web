@@ -3,7 +3,12 @@ import styled, { css } from "styled-components";
 import { Breakpoint } from "../../utils/styles/BreakPoint";
 import { mainColor } from "../../utils/styles/theme";
 
-export type TypographyVariant = "paragraph" | "title" | "quote";
+export type TypographyVariant =
+	| "paragraph"
+	| "title"
+	| "title2"
+	| "caption"
+	| "quote";
 export interface TypographyProps {
 	variant?: TypographyVariant;
 	component?: string;
@@ -35,6 +40,15 @@ export class Typography extends Component<TypographyProps, {}> {
 		}
 	`;
 
+	public static title2TypographyStyle = css`
+		${Typography.baseTypographyStyle}
+		font-size: 3rem;
+	`;
+
+	public static captionTypographyStyle = css`
+		${Typography.baseTypographyStyle}
+	`;
+
 	public static quoteTypographyStyle = css`
 		${Typography.baseTypographyStyle}
 		color: #888;
@@ -59,8 +73,18 @@ export class Typography extends Component<TypographyProps, {}> {
 		${Typography.titleTypographyStyle}
 	`;
 
+	private static Title2 = styled.p`
+		${Typography.title2TypographyStyle}
+	`;
+
 	private static Quote = styled.p`
 		${Typography.quoteTypographyStyle}
+	`;
+
+	private static Caption = styled.p`
+		${Typography.captionTypographyStyle}
+		font-size: 1.3rem;
+		opacity: 0.5;
 	`;
 
 	public render = () => {
@@ -78,6 +102,18 @@ export class Typography extends Component<TypographyProps, {}> {
 					<Typography.Title className={className} as={component as any}>
 						{children}
 					</Typography.Title>
+				);
+			case "title2":
+				return (
+					<Typography.Title2 className={className} as={component as any}>
+						{children}
+					</Typography.Title2>
+				);
+			case "caption":
+				return (
+					<Typography.Caption className={className} as={component as any}>
+						{children}
+					</Typography.Caption>
 				);
 			case "quote":
 				return (

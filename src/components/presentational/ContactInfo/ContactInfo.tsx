@@ -23,7 +23,6 @@ const Container = styled.div`
 
 const Title = styled(Typography)`
 	color: black;
-	font-size: 3rem;
 	margin-bottom: 1rem;
 `;
 
@@ -40,7 +39,9 @@ export const ContactInfo = ({
 }: ContactInfoProps) => {
 	return (
 		<Container className={className}>
-			<Title component="h2">Let's get in touch</Title>
+			<Title variant="title2" component="h1">
+				Let's get in touch
+			</Title>
 			<Subtitle>We're open for any suggestion or just to have a chat</Subtitle>
 			<ContactInfoItem title="Email" iconName="alternate_email">
 				{email}
