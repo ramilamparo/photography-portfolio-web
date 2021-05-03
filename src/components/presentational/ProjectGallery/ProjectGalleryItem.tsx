@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
+import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { Image } from "../Image";
 import { Link } from "../Link";
 import { Typography } from "../Typography";
@@ -24,16 +25,22 @@ const Container = styled.div<{ $isBackdropShown: boolean }>`
 		left: 0;
 		height: 100%;
 		width: 100%;
-		${(props) => props.$isBackdropShown && "opacity: 1;"}
 	}
 
-	& &:hover {
+	&:hover {
 		&::before {
 			opacity: 1;
 		}
 
 		& .description-container {
 			opacity: 1;
+		}
+	}
+
+	@media (${Breakpoint.DESKTOP_DOWN}) {
+		&::before,
+		& .description-container {
+			${(props) => props.$isBackdropShown && "opacity: 1;"}
 		}
 	}
 `;
@@ -45,7 +52,10 @@ const DescriptionContainer = styled.div<{ $isShown: boolean }>`
 	transform: translate(-50%, -50%);
 	transition-duration: 1s;
 	opacity: 0;
-	${(props) => props.$isShown && "opacity: 1;"}
+
+	@media (${Breakpoint.DESKTOP_DOWN}) {
+		${(props) => props.$isShown && "opacity: 1;"}
+	}
 `;
 
 const StyledImage = styled(Image)`
