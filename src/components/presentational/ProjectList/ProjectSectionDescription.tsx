@@ -1,6 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { slideUp } from "../../../utils/styles/animations";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
+import { useNavBarContentRef } from "../../hooks/useNavBarContentRef";
+import { useOnScrollAppear } from "../../hooks/useOnScroll";
 import { Link } from "../Link";
 import { Typography } from "../Typography";
 
@@ -10,9 +13,19 @@ export interface ProjectSectionDescriptionProps {
 	link: string;
 }
 
-const Container = styled.div`
+const showAnimation = css`
+	animation-name: ${slideUp};
+	animation-duration: 0.5s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+	animation-delay: 0.2s;
+`;
+
+const Container = styled.div<{ $isShown: boolean }>`
 	overflow: hidden;
+	opacity: 0;
 	position: relative;
+	${(props) => props.$isShown && showAnimation}
 `;
 
 const CenterContainer = styled.div`
@@ -39,8 +52,13 @@ export const ProjectSectionDescription = ({
 	shortDescription,
 	title
 }: ProjectSectionDescriptionProps) => {
+	const navBar = useNavBarContentRef();
+	const { ref, hasAppeared, isVisible } = useOnScrollAppear<HTMLDivElement>(
+		navBar.ref
+	);
+
 	return (
-		<Container>
+		<Container ref={ref} $isShown={isVisible || hasAppeared}>
 			<CenterContainer>
 				<Title variant="title" component="h2">
 					{title}

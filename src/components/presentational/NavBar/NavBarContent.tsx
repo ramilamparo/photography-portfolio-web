@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { navBarWidth } from "../../../utils/styles/theme";
 import { NavBar } from "./NavBar";
+import { NavBarContentContextProvider } from "./NavBarContentContext";
 import { NavBarLinkItemProps } from "./NavBarLinkItem";
 
 export interface NavBarContentProps {
@@ -51,6 +52,8 @@ export const NavBarContent = ({
 }: NavBarContentProps) => {
 	const [navBarOpen, setNavBarOpen] = useState(false);
 
+	const [contentElRef, setContentRef] = useState<HTMLDivElement | null>(null);
+
 	const handleOnClose = useCallback(() => {
 		setNavBarOpen(false);
 	}, []);
@@ -68,7 +71,11 @@ export const NavBarContent = ({
 					onClose={handleOnClose}
 					onOpen={handleOnOpen}
 				/>
-				<Content onPointerDown={handleOnClose}>{children}</Content>
+				<NavBarContentContextProvider value={{ navbar: contentElRef }}>
+					<Content onPointerDown={handleOnClose} ref={(e) => setContentRef(e)}>
+						{children}
+					</Content>
+				</NavBarContentContextProvider>
 			</MovingContainer>
 		</Container>
 	);

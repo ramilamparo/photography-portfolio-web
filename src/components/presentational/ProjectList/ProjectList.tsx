@@ -23,7 +23,9 @@ export const ProjectList = ({ sections }: ProjectListProps) => {
 	const sectionNodes = useMemo(() => {
 		return sections.map((section) => {
 			return (
-				<ProjectSection>
+				<ProjectSection
+					key={section.title + section.shortDescription + section.link}
+				>
 					<ProjectSectionImage title={section.title} coverSrc={section.coverSrc} />
 					<ProjectSectionDescription
 						title={section.title}

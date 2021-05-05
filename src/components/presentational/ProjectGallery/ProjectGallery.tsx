@@ -34,7 +34,9 @@ const Container = styled.div`
 export const ProjectGallery = ({ items }: ProjectGalleryProps) => {
 	const galleryItemNodes = useMemo(() => {
 		return items.map((itemProps) => {
-			return <ProjectGalleryItem key={itemProps.link} {...itemProps} />;
+			return (
+				<ProjectGalleryItem key={itemProps.link + itemProps.title} {...itemProps} />
+			);
 		});
 	}, [items]);
 
