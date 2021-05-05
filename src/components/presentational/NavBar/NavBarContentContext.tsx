@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
 export interface NavBarContentContextProps {
-	navbar: HTMLDivElement | null;
+	contentEl: HTMLDivElement | null;
 }
 
 export const NavBarContentContext = createContext<NavBarContentContextProps>({
-	navbar: null
+	contentEl: null
 });
 
 export const NavBarContentContextProvider = NavBarContentContext.Provider;

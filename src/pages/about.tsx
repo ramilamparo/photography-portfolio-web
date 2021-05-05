@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { AboutImage } from "../components/container/AboutImage";
 import { AboutInfo } from "../components/container/AboutInfo";
+import { PageWrapper } from "../components/utils/PageWrapper";
 import { Breakpoint } from "../utils/styles/BreakPoint";
 
 const Container = styled.div`
@@ -28,10 +29,12 @@ const StyledAboutInfo = styled(AboutInfo)`
 
 const Contact = () => {
 	return (
-		<Container>
-			<StyledAboutImage />
-			<StyledAboutInfo />
-		</Container>
+		<PageWrapper>
+			<Container>
+				<StyledAboutImage />
+				<StyledAboutInfo />
+			</Container>
+		</PageWrapper>
 	);
 };
 

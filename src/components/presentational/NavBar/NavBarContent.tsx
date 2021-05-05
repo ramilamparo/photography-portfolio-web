@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
 import { navBarWidth } from "../../../utils/styles/theme";
 import { NavBar } from "./NavBar";
-import { NavBarContentContextProvider } from "./NavBarContentContext";
 import { NavBarLinkItemProps } from "./NavBarLinkItem";
 
 export interface NavBarContentProps {
@@ -30,20 +29,10 @@ const MovingContainer = styled.div<{ $navBarOpen: boolean }>`
 	}
 `;
 
-const Content = styled.div`
-	overflow-y: auto;
-	overflow-x: hidden;
+const Content = styled.main`
+	overflow: hidden;
 	background-color: #111111;
 	flex-grow: 1;
-	padding: 0 15rem;
-
-	@media (${Breakpoint.BIG_DESKTOP_DOWN}) {
-		padding: 0 5rem;
-	}
-
-	@media (${Breakpoint.TABLET_PORTRAIT_DOWN}) {
-		padding: 0;
-	}
 `;
 
 export const NavBarContent = ({
@@ -51,8 +40,6 @@ export const NavBarContent = ({
 	...navBarProps
 }: NavBarContentProps) => {
 	const [navBarOpen, setNavBarOpen] = useState(false);
-
-	const [contentElRef, setContentRef] = useState<HTMLDivElement | null>(null);
 
 	const handleOnClose = useCallback(() => {
 		setNavBarOpen(false);
@@ -71,11 +58,7 @@ export const NavBarContent = ({
 					onClose={handleOnClose}
 					onOpen={handleOnOpen}
 				/>
-				<NavBarContentContextProvider value={{ navbar: contentElRef }}>
-					<Content onPointerDown={handleOnClose} ref={(e) => setContentRef(e)}>
-						{children}
-					</Content>
-				</NavBarContentContextProvider>
+				<Content onPointerDown={handleOnClose}>{children}</Content>
 			</MovingContainer>
 		</Container>
 	);

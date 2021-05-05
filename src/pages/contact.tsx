@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { ContactInfo } from "../components/container/ContactInfo";
 import { ContactForm } from "../components/container/ContactForm";
 import { Breakpoint } from "../utils/styles/BreakPoint";
+import { PageWrapper } from "../components/utils/PageWrapper";
 
-const Container = styled.div`
+const Container = styled(PageWrapper)`
 	display: flex;
 	height: 100vh;
 

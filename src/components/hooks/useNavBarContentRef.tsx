@@ -5,6 +5,6 @@ export const useNavBarContentRef = () => {
 	const context = useContext(NavBarContentContext);
 
 	return {
-		ref: context.navbar
+		ref: context.contentEl
 	};
 };
