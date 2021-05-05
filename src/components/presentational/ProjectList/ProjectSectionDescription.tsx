@@ -18,7 +18,6 @@ const showAnimation = css`
 	animation-duration: 0.5s;
 	animation-timing-function: ease-out;
 	animation-fill-mode: forwards;
-	animation-delay: 0.2s;
 `;
 
 const Container = styled.div<{ $isShown: boolean }>`

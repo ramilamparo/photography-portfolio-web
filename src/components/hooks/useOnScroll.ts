@@ -35,7 +35,7 @@ export const useOnScrollAppear = <T extends HTMLElement>(
 	}, [parent, callback, handleElementOutside, handleElementInside]);
 
 	const handleOnScrollDebounced = useMemo(() => {
-		return debounce(handleOnScroll, 100);
+		return debounce(handleOnScroll, 10);
 	}, [handleOnScroll]);
 
 	useEffect(() => {
