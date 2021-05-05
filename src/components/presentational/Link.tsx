@@ -7,6 +7,7 @@ import { outlineButtonStyle } from "./Button";
 export interface LinkProps {
 	to: string;
 	children: string;
+	onClick?: () => void;
 	className?: string;
 	button?: boolean;
 }
@@ -29,16 +30,33 @@ const isUrlSameDomain = (url: string) => {
 	return isUrlSameDomainRegexp.test(url);
 };
 
-export const Link = ({ to, children, className, button }: LinkProps) => {
+export const Link = ({
+	to,
+	children,
+	className,
+	button,
+	onClick
+}: LinkProps) => {
 	if (isUrlSameDomain(to)) {
 		return (
-			<StyledLink $button={button} className={className} to={to} as={GatsbyLink}>
+			<StyledLink
+				onClick={onClick}
+				$button={button}
+				className={className}
+				to={to}
+				as={GatsbyLink}
+			>
 				{children}
 			</StyledLink>
 		);
 	}
 	return (
-		<StyledLink $button={button} className={className} href={to}>
+		<StyledLink
+			onClick={onClick}
+			$button={button}
+			className={className}
+			href={to}
+		>
 			{children}
 		</StyledLink>
 	);

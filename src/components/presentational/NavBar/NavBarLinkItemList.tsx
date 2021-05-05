@@ -5,6 +5,7 @@ import { NavBarLinkItemProps, NavBarLinkItem } from "./NavBarLinkItem";
 export interface NavBarLinkItemListProps {
 	links: NavBarLinkItemProps[];
 	className?: string;
+	onLinkClick?: () => void;
 }
 
 const StyledUl = styled.ul`
@@ -15,15 +16,20 @@ const StyledUl = styled.ul`
 
 export const NavBarLinkItemList = ({
 	links,
-	className
+	className,
+	onLinkClick
 }: NavBarLinkItemListProps) => {
 	const linkItemList = useMemo(() => {
 		return links.map((linkProps) => {
 			return (
-				<NavBarLinkItem key={linkProps.label + linkProps.path} {...linkProps} />
+				<NavBarLinkItem
+					onClick={onLinkClick}
+					key={linkProps.label + linkProps.path}
+					{...linkProps}
+				/>
 			);
 		});
-	}, [links]);
+	}, [links, onLinkClick]);
 
 	return <StyledUl className={className}>{linkItemList}</StyledUl>;
 };

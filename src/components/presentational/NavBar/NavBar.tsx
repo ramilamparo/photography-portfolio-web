@@ -84,7 +84,7 @@ export const NavBar = ({
 			<CloseButton hidden={!isNavBarOpen} onClick={onClose} />
 			<MenuButton hidden={isNavBarOpen} onClick={onOpen} />
 			<StyledLogo />
-			<NavBarLinkItemList links={links} />
+			<NavBarLinkItemList onLinkClick={onClose} links={links} />
 			<CopyrightText>
 				{`Copyright ©${new Date().getFullYear()} All rights reserved`}
 			</CopyrightText>

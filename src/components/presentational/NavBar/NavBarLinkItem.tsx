@@ -6,6 +6,7 @@ export interface NavBarLinkItemProps {
 	label: string;
 	path: string;
 	className?: string;
+	onClick?: () => void;
 }
 
 const StyledLink = styled(Link)`
@@ -21,11 +22,12 @@ const StyledLi = styled.li`
 export const NavBarLinkItem = ({
 	label,
 	path,
-	className
+	className,
+	onClick
 }: NavBarLinkItemProps) => {
 	return (
 		<StyledLi>
-			<StyledLink to={path} className={className}>
+			<StyledLink onClick={onClick} to={path} className={className}>
 				{label}
 			</StyledLink>
 		</StyledLi>
