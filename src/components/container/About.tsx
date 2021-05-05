@@ -1,16 +1,18 @@
 import React from "react";
 import { useAboutMe } from "../hooks/useAboutMe";
-import { AboutInfo as AboutInfoPresentational } from "../presentational/About/AboutInfo";
+import { About as AboutPresentational } from "../presentational/About/About";
 
-interface AboutInfoProps {
+interface AboutProps {
 	className?: string;
 }
 
-export const AboutInfo = ({ className }: AboutInfoProps) => {
+export const About = ({ className }: AboutProps) => {
 	const aboutInfo = useAboutMe();
 	return (
-		<AboutInfoPresentational
+		<AboutPresentational
 			className={className}
+			src={aboutInfo.aboutImage}
+			alt={aboutInfo.fullName}
 			title={aboutInfo.title}
 			description={aboutInfo.description}
 			fullName={aboutInfo.fullName}
