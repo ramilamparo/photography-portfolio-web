@@ -27,13 +27,15 @@ const Container = styled.div<{ $isBackdropShown: boolean }>`
 		width: 100%;
 	}
 
-	&:hover {
-		&::before {
-			opacity: 1;
-		}
+	@media (${Breakpoint.DESKTOP_UP}) {
+		&:hover {
+			&::before {
+				opacity: 1;
+			}
 
-		& .description-container {
-			opacity: 1;
+			& .description-container {
+				opacity: 1;
+			}
 		}
 	}
 
@@ -54,7 +56,7 @@ const DescriptionContainer = styled.div<{ $isShown: boolean }>`
 	opacity: 0;
 
 	@media (${Breakpoint.DESKTOP_DOWN}) {
-		${(props) => props.$isShown && "opacity: 1;"}
+		${(props) => (props.$isShown ? "opacity: 1;" : "")}
 	}
 `;
 
