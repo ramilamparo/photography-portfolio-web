@@ -1,6 +1,9 @@
 import React, { useCallback, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { slideUp } from "../../../utils/styles/animations";
 import { Breakpoint } from "../../../utils/styles/BreakPoint";
+import { useNavBarContentRef } from "../../hooks/useNavBarContentRef";
+import { useOnScrollAppear } from "../../hooks/useOnScroll";
 import { Image } from "../Image";
 import { Link } from "../Link";
 import { Typography } from "../Typography";
@@ -11,7 +14,20 @@ export interface ProjectGalleryItemProps {
 	link: string;
 }
 
-const Container = styled.div<{ $isBackdropShown: boolean }>`
+const showAnimation = css`
+	&:nth-child(odd) {
+		animation-name: ${slideUp};
+	}
+	&:nth-child(even) {
+		animation-name: ${slideUp};
+	}
+	animation-duration: 0.5s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+	animation-delay: 0.5s;
+`;
+
+const Container = styled.div<{ $isBackdropShown: boolean; $isShown: boolean }>`
 	position: relative;
 	height: 100%;
 
@@ -25,6 +41,11 @@ const Container = styled.div<{ $isBackdropShown: boolean }>`
 		left: 0;
 		height: 100%;
 		width: 100%;
+	}
+
+	@media (${Breakpoint.TABLET_PORTRAIT_UP}) {
+		opacity: 0;
+		${(props) => props.$isShown && showAnimation}
 	}
 
 	@media (${Breakpoint.DESKTOP_UP}) {
@@ -84,9 +105,18 @@ export const ProjectGalleryItem = ({
 	const handlePointerDown = useCallback(() => {
 		setIsDescriptionShown(!isDescriptionShown);
 	}, [isDescriptionShown]);
+	const navBar = useNavBarContentRef();
+	const { ref, hasAppeared, isVisible } = useOnScrollAppear<HTMLDivElement>(
+		navBar.ref
+	);
 
 	return (
-		<Container $isBackdropShown={isDescriptionShown} onClick={handlePointerDown}>
+		<Container
+			ref={ref}
+			$isShown={hasAppeared || isVisible}
+			$isBackdropShown={isDescriptionShown}
+			onClick={handlePointerDown}
+		>
 			<StyledImage src={coverSrc} alt={title} />
 			<DescriptionContainer
 				$isShown={isDescriptionShown}
