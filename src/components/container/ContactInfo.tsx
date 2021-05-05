@@ -1,6 +1,6 @@
 import React from "react";
 import { useContactInfo } from "../hooks/useContactInfo";
-import { ContactInfo as ContactInfoPresentational } from "../presentational/ContactInfo/ContactInfo";
+import { ContactInfo as ContactInfoPresentational } from "../presentational/Contact/ContactInfo";
 
 export interface ContactInfoProps {
 	className?: string;
