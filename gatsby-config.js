@@ -2,14 +2,13 @@ require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`
 });
 
-const {
-	GATSBY_API_URL,
-	GATSBY_BROWSER_API_URL,
-	INSTAGRAM_USERNAME_ID
-} = process.env;
+const { GATSBY_API_URL, GATSBY_BROWSER_API_URL } = process.env;
 
 if (!GATSBY_API_URL) {
 	throw new Error("GATSBY_API_URL is not defined in environment!");
+}
+if (!GATSBY_BROWSER_API_URL) {
+	throw new Error("GATSBY_BROWSER_API_URL is not defined in environment!");
 }
 
 module.exports = {
@@ -62,12 +61,6 @@ module.exports = {
 				fieldName: "strapi",
 				// Url to query from
 				url: `${GATSBY_API_URL}/graphql`
-			}
-		},
-		{
-			resolve: "gatsby-source-instagram",
-			options: {
-				username: INSTAGRAM_USERNAME_ID
 			}
 		},
 		/** Make google fonts with Roboto font and material icons available. */

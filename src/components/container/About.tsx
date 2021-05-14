@@ -11,8 +11,8 @@ export const About = ({ className }: AboutProps) => {
 	return (
 		<AboutPresentational
 			className={className}
-			src={aboutInfo.aboutImage}
-			alt={aboutInfo.fullName}
+			src={aboutInfo.aboutImage.large || aboutInfo.aboutImage.original}
+			alt={aboutInfo.aboutImage.alt}
 			title={aboutInfo.title}
 			description={aboutInfo.description}
 			fullName={aboutInfo.fullName}

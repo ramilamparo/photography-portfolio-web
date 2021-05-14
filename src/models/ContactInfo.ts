@@ -17,6 +17,10 @@ export class ContactInfo implements ContactInfoAttributes {
 		this.email = attributes.email;
 	}
 
+	public static fromObject = (attributes: ContactInfoAttributes) => {
+		return new ContactInfo(attributes);
+	};
+
 	public static getRandom = () => {
 		return new ContactInfo({
 			address: faker.address.streetAddress(true),

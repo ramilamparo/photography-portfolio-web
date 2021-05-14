@@ -8,5 +8,11 @@ export interface LogoProps {
 
 export const Logo = ({ className }: LogoProps) => {
 	const aboutMe = useAboutMe();
-	return <Image src={aboutMe.avatarUrl} alt="Home" className={className} />;
+	return (
+		<Image
+			src={aboutMe.avatarImage.thumbnail || aboutMe.avatarImage.original}
+			alt="Home"
+			className={className}
+		/>
+	);
 };

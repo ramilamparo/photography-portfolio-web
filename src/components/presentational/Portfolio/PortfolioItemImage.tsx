@@ -7,10 +7,20 @@ export interface PortfolioItemImageProps {
 	alt: string;
 }
 
+const Container = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
 const StyledImage = styled(Image)`
-	width: 100%;
+	height: 100vh;
+	object-fit: contain;
 `;
 
 export const PortfolioItemImage = ({ src, alt }: PortfolioItemImageProps) => {
-	return <StyledImage src={src} alt={alt} />;
+	return (
+		<Container>
+			<StyledImage src={src} alt={alt} />
+		</Container>
+	);
 };

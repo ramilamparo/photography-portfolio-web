@@ -9,8 +9,8 @@ export const Gallery = () => {
 		<ProjectGallery
 			items={gallery.map((item) => {
 				return {
-					coverSrc: item.cover.src,
-					link: `#${item.title}`,
+					coverSrc: item.cover.large || item.cover.original,
+					link: item.link,
 					title: item.title
 				};
 			})}
